@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <style>
+    .canvas {
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+	  margin-top: -100px;
+    }
+    canvas {
+      border: 3px solid darkgreen;
+	  background-color : lightgreen;
+    }
+	h1{
+		font-family : verdana;
+		text-align : center;
+		background-color: rgba(255,255,255, 0.4);
+		border: solid black;
+		border-radius: 10px;
+	}
+	.gameInst{
+		text-align : center;
+		background-color : darkgreen;
+		border : 1px solid black;
+		font-family : monaco;
+		font-size : 20px;
+		font-color: white;
+		border-radius: 10px;
+		background-color: rgba(255,255,255, 0.4);
+	}
+	
+	body{
+		background-image : url('grassBG.jpg');
+		background-repeat : no-repeat;
+		background-attachment : fixed;
+		background-size : 100% 100%;
+	}
+	
+	#score{
+		font-family: monaco; 
+		text-align: center;
+		font-size: 20px;
+		background-color: green;
+		border: 2px solid black;
+		background-color: rgba(255,255,255, 0.8);
+		border-radius: 10px;
+	}
+	#startBtn{
+		text-align: center;
+	}
+	
+	footer {
+      text-align: center;
+      padding: 2em;
+      background-color: #333;
+      color: #fff;
+      border-top: 2px solid #ddd;
+      border-radius: 15px;
+    }
+  </style>
+  <title>MiniGame</title>
+</head>
+<body>
+	
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Sustainability</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="survey.html">Survey</a>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="minisample.html">Mini Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <u>
+	<b>
+	  <h1>
+		Dodge The Plastic
+	  </h1>
+	</b>
+  </u>
+  
+  <div class="gameInst">
+	  <h2 class="gameInst"> 
+		GAME INSTRUCTIONS:
+	  </h2>
+	  <b><p class="gameInst">1.Use The Mouse To Control The Player.<br>2.Dodge The Plastic! <br>3.Beat Your Highscore.</p></b>
+  </div>
+  
+  <p id="score">Score: 0</p>
+  
+  <div class="canvas">
+	<canvas class="body" id="gameCanvas" width="600" height="400">
+	</canvas>
+  </div>
+    
+	<footer>
+      <p>&copy; 2023 Sustainability. All rights reserved.</p>
+	</footer>
+  
+  <script>
+		const canvas = document.getElementById("gameCanvas");
+		const ctx = canvas.getContext("2d");
+		let playerScore = 0;
+		
+		const playerImage = new Image();
+		playerImage.src = "player.png";
+
+		const plasticImage = new Image();
+		plasticImage.src = "waste2.png";
+
+		const player = {
+		  x: canvas.width / 2,
+		  y: canvas.height / 2,
+		  width: 30,
+		  height: 30
+		};
+		
+		const plastics = [];
+		function generatePlastic() {
+		  const plastic = {
+			x: 0,
+			y: Math.random() * canvas.height,
+			width: 20,
+			height: 20,
+			speed: Math.random() * 3 + 3, // Random speed between 1 and 4
+		  };
+		  plastics.push(plastic);
+		}
+
+		function drawPlayer() {
+		  ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+		}
+
+		function drawPlastics() {
+		  plastics.forEach((plastic) => {
+			ctx.drawImage(plasticImage, plastic.x, plastic.y, plastic.width, plastic.height);
+		  });
+		} 
+		function update() {
+		  const scoreVis = document.getElementById("score");
+		  scoreVis.textContent = `Score: ${playerScore}`;
+		  plastics.forEach((plastic) => {
+			// Move plastic
+			plastic.x += plastic.speed;
+			if (plastic.x > canvas.width) {
+			  plastic.x = 0;
+			  playerScore ++;
+			   
+			  plastic.y = Math.random() * canvas.height;
+			}
+
+			// Check collision
+			if (
+			  player.x < plastic.x + plastic.width &&
+			  player.x + player.width > plastic.x &&
+			  player.y < plastic.y + plastic.height &&
+			  player.y + player.height > plastic.y
+			) {
+			  alert("Game Over! Plastic hit you.");
+			  document.location.reload();
+			}
+		  });
+		}
+
+		function draw() {
+		  ctx.clearRect(0, 0, canvas.width, canvas.height);
+		  drawPlayer();
+		  drawPlastics();
+		}
+
+		function gameLoop() {
+		  update();
+		  draw();
+		  requestAnimationFrame(gameLoop);
+		}
+		//
+		document.addEventListener("mousemove", (event) => {
+		  player.x = event.clientX - canvas.getBoundingClientRect().left - player.width / 2;
+		  player.y = event.clientY - canvas.getBoundingClientRect().top - player.height / 2;
+		});
+
+		// Generate fewer initial plastics
+		for (let i = 0; i < 3; i++) {
+		  generatePlastic();
+		}
+		gameLoop();
+    </script>
+</body>
+</html>

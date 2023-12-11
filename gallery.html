@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <!-- Link to Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+  body {
+    margin: 0;
+    font-family: Verdana;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-image: url("Planting.jpg");
+    background-size: cover;
+    padding: 100px;
+    text-align: center;
+    color: #fff;
+}
+
+header h2{
+    font-size: 48px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 15px;
+
+}
+
+p{
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    font-size: large;
+    color: #555;
+    border-radius: 10px;
+}
+
+article {
+    background-color: #e1e1e1;
+    border: 2px solid #000000;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.row {
+    margin: 0 -15px;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.column img {
+    border: 2px solid black;
+    opacity: 0.8;
+    cursor: pointer;
+    width: 100%;
+    height: 380px; 
+    object-fit: cover; 
+    border-radius: 12px;
+    transition: opacity 0.3s;
+}
+
+.column img:hover {
+    opacity: 1;
+}
+
+.container {
+    position: fixed;
+    display: none;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #000000;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+#imgtext {
+    margin-top: 20px;
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+}
+
+.closebtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #000000;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+#expandedImg {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+}
+
+div p {
+    font-size: 18px;
+    text-align: center;
+    color: #000;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    background-color: #333;
+    color: #fff;
+    border-top: 2px solid #ddd;
+    border-radius: 15px;
+}
+footer p{
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+
+}
+
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Sustainability</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="survey.html">Survey</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="minisample.html">Mini Game</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <hr>
+     <!-- Header section -->
+    <header >
+        <h2>Sustainability</h2>
+        <div>
+            <p>Sustainable methods ifluence greatly to change in society.
+            Through reducing the number of chemicals released into the environment and your carbon footprint, you can support to sustainability and make the environment healthier.
+            The entire globe gets through a focus on sustainability and has access to cleaner, healthier living environments.</p>
+            <p>Click on these images to find more information on why we need to follow these examples.</p>
+        </div>
+    </header>
+    <hr>
+
+    <!-- The eight columns -->
+    <article>
+        <div class="row">
+            <!-- Image columns with associated alt text and onclick event -->
+            <div class="column">
+                <img src="water.jpg" alt="<b>Water</b> is our main source of survival it's used for drinking and planting."
+                    onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="recycling.jpg"
+                    alt="<b>Recycling</b> makes our planet cleaner and it is good for the environment."
+                    onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="Planting.jpg" alt="<b>Planting</b> trees creates oxygen for us to survive."
+                    onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="sun.jpg" alt="<b>Sun</b> is our main source of energy and light." onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="solar pannels.jpg" alt="<b>Solar panels</b> generate energy from the sun."
+                    onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="Dam.jpg" alt="<b>Dams</b> generates energy from the flows of water." onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="windmill.jpg" alt="<b>Windmills</b> generates energy from the wind." onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="tidal energy.jpg" alt="<b>Tidal energy</b> generates energy from tides." onclick="myFunction(this);">
+            </div>
+            <!-- (Repeated structure for the one click event) -->
+        </div>
+    </article>
+
+    <!-- for enlarged image -->
+    <div class="container">
+        <!-- Close button with onclick event to hide the image-->
+        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+        <!-- Enlarge the image -->
+        <img id="expandedImg">
+        <div id="imgtext">
+        </div>
+    </div>
+
+    <footer>
+      <p>©2023 Sustainability. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript script for the expanded images and image text -->
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            document.querySelector('.container').style.display = "block";
+        }
+    </script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
